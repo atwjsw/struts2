@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC 
+	"-//Apache Software Foundation//DTD Struts Configuration 2.3//EN" 
+	"http://struts.apache.org/dtds/struts-2.3.dtd">
+
+<struts>
+	<package name="default" namespace="/" extends="struts-default">
+	
+	<default-action-ref name="index"></default-action-ref>
+	
+	<action name="index">
+		<result>/error.jsp</result>
+	</action>
+	
+	<!-- 动态调用方法三：通配符方式 -->
+		<action name="*_*_*" method="{2}" class="com.imooc.struts2.{3}.{1}Action">
+			<result>/index.jsp</result>
+			<!-- 动态调用方法二：感叹号方式 -->
+			<result name="add">/{2}.jsp</result>
+			<result name="update">/{2}.jsp</result>
+		</action>
+		
+		<action name="LoginAction" method="login" class="com.imooc.struts2.action.LoginAction">
+			<result>/success.jsp</result>			
+			<result name="input">/login.jsp</result>
+		</action>
+		
+		<!-- 动态调用方法一：指定Method -->
+		<!-- <action name="addAction" method="add" class="com.imooc.struts2.action.HelloWorldAction">
+			<result>/add.jsp</result>
+		</action>
+		
+		<action name="updateAction" method="update" class="com.imooc.struts2.action.HelloWorldAction">
+			<result>/update.jsp</result>
+		</action> -->
+		
+		
+	</package>
+	
+	<!-- <constant name="struts.action.extension" value=""/> -->
+	<!-- 动态调用方法二：感叹号方式 -->
+	<!-- <constant name="struts.enable.DynamicMethodInvocation" value="true"></constant> -->
+</struts>  
